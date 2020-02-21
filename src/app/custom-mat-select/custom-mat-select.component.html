@@ -1,0 +1,29 @@
+<mat-form-field [floatLabel]="'always'">
+  <mat-label>{{label}}</mat-label>
+
+  <mat-select #select [placeholder]="placeholder" [formControl]="selectCtrl" [multiple]="isMultiple"
+    triggerValue="Select" [disableOptionCentering]="true" #select [multiple]="true" name="form_value">
+
+    <div class="options-container">
+
+      <mat-option>
+        <ngx-mat-select-search [formControl]="selectFilterCtrl" [placeholderLabel]="'Search'"
+          [noEntriesFoundLabel]="'No match found'"></ngx-mat-select-search>
+      </mat-option>
+
+      <mat-checkbox class="mat-option" [formControl]="selectCtrl" [indeterminate]="isIndeterminate()"
+        [checked]="isChecked()" (click)="$event.stopPropagation()" (change)="toggleSelection($event)">
+        Select All
+      </mat-checkbox>
+
+      <mat-option *ngFor="let option of filteredoptions" [value]="option">
+        {{option.title ? option.title : option }}
+      </mat-option>
+    </div>
+    <div>
+      <button mat-button (click)="resetOptions()">Clear</button>
+      <button mat-button (click)="setOptions()">Submit</button>
+
+    </div>
+  </mat-select>
+</mat-form-field>
