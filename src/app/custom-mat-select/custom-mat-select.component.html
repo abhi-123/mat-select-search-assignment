@@ -20,9 +20,9 @@
         {{option.title ? option.title : option }}
       </mat-option>
     </div>
-    <div>
+    <div class="action-buttons-container">
       <button mat-button (click)="resetOptions()">Clear</button>
-      <button mat-button (click)="setOptions()">Submit</button>
+      <button mat-button (click)="setOptions()" class="submitButton">Submit</button>
 
     </div>
   </mat-select>
